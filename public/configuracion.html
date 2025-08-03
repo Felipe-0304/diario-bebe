@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración - Mi Pequeño Tesoro</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+        .theme-preview {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .theme-option {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: var(--transicion);
+        }
+        
+        .theme-option:hover {
+            transform: scale(1.1);
+        }
+        
+        .theme-option.selected {
+            border-color: var(--color-texto);
+        }
+        
+        #themeDefault {
+            background: linear-gradient(135deg, #ff9bb3, #a5d8ff);
+        }
+        
+        #themePastel {
+            background: linear-gradient(135deg, #a5d8ff, #c3aed6);
+        }
+        
+        #themeJungla {
+            background: linear-gradient(135deg, #7cbc5f, #f7d560);
+        }
+        
+        #themeOceano {
+            background: linear-gradient(135deg, #4aa8d0, #a5d8ff);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Mi Pequeño Tesoro</h1>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="/index.html" class="nav-link">Inicio</a></li>
+            <li class="nav-item"><a href="/fotos.html" class="nav-link">Fotos</a></li>
+            <li class="nav-item"><a href="/calendario.html" class="nav-link">Calendario</a></li>
+            <li class="nav-item"><a href="/linea-tiempo.html" class="nav-link">Línea de Tiempo</a></li>
+            <li class="nav-item"><a href="/configuracion.html" class="nav-link active">Configuración</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section class="card">
+            <h2>Mis Diarios</h2>
+            <p>Selecciona un diario para establecerlo como activo. La gestión de acceso ahora se realiza desde el panel de administración.</p>
+            
+            <div class="diarios-container" id="diariosList">
+                <!-- Diarios se cargarán dinámicamente aquí -->
+            </div>
+            
+            <button id="nuevoDiarioBtn" class="btn">Crear Nuevo Diario</button>
+        </section>
+
+        <section class="card">
+            <h2>Configuración del Tema</h2>
+            
+            <div class="theme-preview">
+                <div id="themeDefault" class="theme-option selected" data-theme="default"></div>
+                <div id="themePastel" class="theme-option" data-theme="pastel"></div>
+                <div id="themeJungla" class="theme-option" data-theme="jungla"></div>
+                <div id="themeOceano" class="theme-option" data-theme="oceano"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="colorPicker">Color personalizado:</label>
+                <input type="color" id="colorPicker" class="form-control" value="#ff9bb3">
+            </div>
+            
+            <button id="guardarTemaBtn" class="btn">Guardar Cambios</button>
+        </section>
+
+        <section class="card">
+            <h2>Configuración de Cuenta</h2>
+            <form id="accountForm">
+                <div class="form-group">
+                    <label for="accountName">Nombre:</label>
+                    <input type="text" id="accountName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="accountEmail">Email:</label>
+                    <input type="email" id="accountEmail" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="accountPassword">Nueva Contraseña (dejar en blanco para no cambiar):</label>
+                    <input type="password" id="accountPassword" class="form-control">
+                </div>
+                <button type="submit" class="btn">Actualizar Cuenta</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="/js/utils.js"></script>
+    <script src="/js/theme-manager.js"></script>
+    <script src="/js/configuracion.js"></script>
+</body>
+</html>

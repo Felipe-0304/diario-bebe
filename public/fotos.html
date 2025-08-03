@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotos - Mi Pequeño Tesoro</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            padding: 1rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radio-borde);
+            overflow: hidden;
+            aspect-ratio: 1;
+            background: #f5f5f5;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transicion);
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .photo-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.5rem;
+            transform: translateY(100%);
+            transition: var(--transicion);
+        }
+        
+        .gallery-item:hover .photo-info {
+            transform: translateY(0);
+        }
+        
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transicion);
+        }
+        
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: var(--radio-borde);
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Mi Pequeño Tesoro</h1>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="/index.html" class="nav-link">Inicio</a></li>
+            <li class="nav-item"><a href="/fotos.html" class="nav-link active">Fotos</a></li>
+            <li class="nav-item"><a href="/calendario.html" class="nav-link">Calendario</a></li>
+            <li class="nav-item"><a href="/linea-tiempo.html" class="nav-link">Línea de Tiempo</a></li>
+            <li class="nav-item"><a href="/configuracion.html" class="nav-link">Configuración</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section class="card">
+            <h2>Galería de Fotos</h2>
+            <div class="filter-options">
+                <select id="filterType" class="form-control">
+                    <option value="all">Todas las fotos</option>
+                    <option value="foto">Solo fotos</option>
+                    <option value="hito">Solo hitos</option>
+                </select>
+                <select id="filterDate" class="form-control">
+                    <option value="all">Todas las fechas</option>
+                    <option value="month">Este mes</option>
+                    <option value="year">Este año</option>
+                </select>
+            </div>
+            
+            <div class="gallery-container" id="gallery">
+                <!-- Fotos se cargarán dinámicamente aquí -->
+            </div>
+        </section>
+    </main>
+
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightboxImage" src="" alt="">
+            <div class="lightbox-info" id="lightboxInfo"></div>
+        </div>
+    </div>
+
+    <script src="/js/utils.js"></script>
+    <script src="/js/fotos.js"></script>
+</body>
+</html>

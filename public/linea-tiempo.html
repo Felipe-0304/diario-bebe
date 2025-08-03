@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Línea de Tiempo - Mi Pequeño Tesoro</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: var(--color-primario);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid var(--color-primario);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -12px;
+        }
+        
+        .right::after {
+            left: -12px;
+        }
+        
+        .timeline-content {
+            padding: 1rem;
+            background: white;
+            border-radius: var(--radio-borde);
+            box-shadow: var(--sombra);
+            position: relative;
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: var(--color-primario);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-title {
+            margin-top: 0;
+            color: var(--color-texto);
+        }
+        
+        .timeline-media {
+            margin-top: 1rem;
+            max-width: 100%;
+            border-radius: var(--radio-borde);
+        }
+        
+        .timeline-filter {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Mi Pequeño Tesoro</h1>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="/index.html" class="nav-link">Inicio</a></li>
+            <li class="nav-item"><a href="/fotos.html" class="nav-link">Fotos</a></li>
+            <li class="nav-item"><a href="/calendario.html" class="nav-link">Calendario</a></li>
+            <li class="nav-item"><a href="/linea-tiempo.html" class="nav-link active">Línea de Tiempo</a></li>
+            <li class="nav-item"><a href="/configuracion.html" class="nav-link">Configuración</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section class="card">
+            <h2>Línea de Tiempo</h2>
+            
+            <div class="timeline-filter">
+                <select id="timelineFilterType" class="form-control">
+                    <option value="all">Todos los eventos</option>
+                    <option value="hito">Solo hitos</option>
+                    <option value="foto">Solo fotos</option>
+                </select>
+                <select id="timelineFilterYear" class="form-control">
+                    <option value="all">Todos los años</option>
+                    <!-- Años se cargarán dinámicamente -->
+                </select>
+            </div>
+            
+            <div class="timeline" id="timeline">
+                <!-- Eventos se cargarán dinámicamente aquí -->
+            </div>
+        </section>
+    </main>
+
+    <script src="/js/utils.js"></script>
+    <script src="/js/linea-tiempo.js"></script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración - Mi Pequeño Tesoro</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: var(--radio-borde);
+            box-shadow: var(--sombra);
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--color-primario);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .users-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        .users-table th, .users-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--color-borde);
+        }
+        
+        .users-table th {
+            background: var(--color-secundario);
+        }
+        
+        .danger-btn {
+            background: #e74c3c;
+        }
+        
+        .danger-btn:hover {
+            background: #c0392b;
+        }
+        
+        .config-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        
+        .config-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .config-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .config-slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .config-slider {
+            background-color: var(--color-primario);
+        }
+        
+        input:checked + .config-slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Mi Pequeño Tesoro</h1>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="/index.html" class="nav-link">Inicio</a></li>
+            <li class="nav-item"><a href="/fotos.html" class="nav-link">Fotos</a></li>
+            <li class="nav-item"><a href="/calendario.html" class="nav-link">Calendario</a></li>
+            <li class="nav-item"><a href="/linea-tiempo.html" class="nav-link">Línea de Tiempo</a></li>
+            <li class="nav-item"><a href="/configuracion.html" class="nav-link">Configuración</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section class="card">
+            <h2>Estadísticas del Sistema</h2>
+            
+            <div class="admin-stats">
+                <div class="stat-card">
+                    <span class="stat-number" id="totalUsuarios">0</span>
+                    <span>Usuarios Registrados</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="totalDiarios">0</span>
+                    <span>Diarios Creados</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="totalEventosAdmin">0</span>
+                    <span>Eventos Totales</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="totalFotosAdmin">0</span>
+                    <span>Fotos Subidas</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Configuración Global</h2>
+            
+            <form id="globalConfigForm">
+                <div class="form-group">
+                    <label for="siteName">Nombre del Sitio:</label>
+                    <input type="text" id="siteName" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Permitir nuevos registros:</label>
+                    <label class="config-switch">
+                        <input type="checkbox" id="allowRegistrations">
+                        <span class="config-slider"></span>
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn">Guardar Configuración</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>Gestión de Usuarios</h2>
+            
+            <table class="users-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Rol</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="usersTableBody">
+                    <!-- Usuarios se cargarán dinámicamente aquí -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="/js/utils.js"></script>
+    <script src="/js/admin.js"></script>
+</body>
+</html>

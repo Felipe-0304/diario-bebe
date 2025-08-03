@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Mi Pequeño Tesoro</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>Mi Pequeño Tesoro</h1>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="/index.html" class="nav-link active">Inicio</a></li>
+            <li class="nav-item"><a href="/fotos.html" class="nav-link">Fotos</a></li>
+            <li class="nav-item"><a href="/calendario.html" class="nav-link">Calendario</a></li>
+            <li class="nav-item"><a href="/linea-tiempo.html" class="nav-link">Línea de Tiempo</a></li>
+            <li class="nav-item"><a href="/configuracion.html" class="nav-link">Configuración</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section class="card bienvenida">
+            <h2>Bienvenido, <span id="nombreUsuario"></span></h2>
+            <p>Estás viendo los momentos de <strong id="nombreBebe"></strong></p>
+            <div class="baby-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="totalEventos">0</span>
+                    <span class="stat-label">Eventos</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="totalFotos">0</span>
+                    <span class="stat-label">Fotos</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="totalHitos">0</span>
+                    <span class="stat-label">Hitos</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Últimos Eventos</h2>
+            <div id="ultimosEventos" class="eventos-container"></div>
+            <a href="/calendario.html" class="btn">Ver todos los eventos</a>
+        </section>
+
+        <section class="card">
+            <h2>Fotos Recientes</h2>
+            <div id="fotosRecientes" class="gallery-preview"></div>
+            <a href="/fotos.html" class="btn">Ver todas las fotos</a>
+        </section>
+    </main>
+
+    <script src="/js/utils.js"></script>
+    <script src="/js/index.js"></script>
+</body>
+</html>
